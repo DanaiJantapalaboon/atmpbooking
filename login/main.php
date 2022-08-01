@@ -40,7 +40,7 @@
 
 <body>
 
-<?php
+<?php // เอาไว้ดึง login ไปหน้าอื่นๆ
     if (isset($_SESSION['user_login'])) {
         $user_id = $_SESSION['user_login'];
         $stmt = $conn->query("SELECT * FROM account WHERE id = $user_id");
@@ -48,15 +48,11 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-?>
 
-
-<?php
     include "../component_header.php";
     include "component_navbar_login.php";
     include "../component_calendar.php";
 ?>
-
     
 </body>
 </html>

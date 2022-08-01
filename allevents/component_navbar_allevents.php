@@ -17,10 +17,8 @@
     </symbol>
 </svg>
 
-
-<?php
-    include "modal_login.php";
-    include "modal_register.php";
+<?php include "../modal_booking.php";
+      include "../modal_editaccount.php";
 ?>
 
 
@@ -30,33 +28,31 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-center">
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a href="#" class="nav-link text-secondary disabled px-3">
+                            <a href="../login/main.php" class="nav-link text-white px-3">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
                             Home
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link text-secondary disabled px-3">
+                            <a href="allevents.php" class="nav-link text-white px-3">
                                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
                                 All Events
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link text-secondary disabled px-3" data-bs-toggle="modal" data-bs-target="#userBooking">
+                            <a href="#" class="nav-link text-white px-3" data-bs-toggle="modal" data-bs-target="#userBooking">
                                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
                                 Booking
                             </a>
-                            
-
                         </li>
                         <li>
-                            <a href="#" class="nav-link text-white px-3" data-bs-toggle="modal" data-bs-target="#userLogin">
+                            <a href="../config/logout.php" class="nav-link text-white px-3">
                                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                                Login
+                                Logout
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link text-white px-3" data-bs-toggle="modal" data-bs-target="#userRegister">
+                            <a href="#" class="nav-link text-secondary px-3 disabled">
                                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#account"/></svg>
                                 Register
                             </a>
@@ -68,7 +64,7 @@
 </header>
 
 <div class="container text-end px-3">
-    <p><b>Welcome Anonymous, Please <a href="#" data-bs-toggle="modal" data-bs-target="#userLogin">Login</a> First!</b><br>
+    <p><b>Welcome!, <?php echo $row['name'] . ' ' . $row['surname']. ' '; ?><a href="#" data-bs-toggle="modal" data-bs-target="#editaccount">Edit account</a></b><br>
     Cleanroom Booking System - Version 1.00</p>
 </div>
 

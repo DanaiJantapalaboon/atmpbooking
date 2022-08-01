@@ -17,8 +17,8 @@
     </symbol>
 </svg>
 
-<?php include "modal_booking.php";
-      include "modal_editaccount.php";
+<?php include "../modal_booking.php";
+      include "../modal_editaccount.php";
 ?>
 
 
@@ -34,9 +34,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link text-white px-3">
+                            <a href="../allevents/allevents.php" class="nav-link text-white px-3">
                                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                                Summary
+                                All Events
                             </a>
                         </li>
                         <li>
