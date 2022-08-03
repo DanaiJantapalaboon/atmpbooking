@@ -19,6 +19,7 @@
 
 <?php include "../modal_booking.php";
       include "../modal_editaccount.php";
+      
 ?>
 
 

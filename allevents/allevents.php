@@ -60,6 +60,7 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+
     include "../component_header.php";
     include "component_navbar_allevents.php";
 ?>
@@ -91,8 +92,9 @@
                 </div>
             <?php } ?>
 
-            <?php   // สคริปต์ทดึงข้อมูลจากตาราง booking
+            <?php   // สคริปต์ดึงข้อมูลจากตาราง booking
                 
+
                 $stmt = $conn->query("SELECT * FROM booking");
                 $stmt->execute();
                 $booking = $stmt->fetchAll();
@@ -100,31 +102,32 @@
                 if (!$booking) {
                     echo "<p><td colspan='9' class='text-center'>No booking found</td></p>";
                 } else {
-                    foreach ($booking as $booking) {
-
-                include "../modal_editbooking.php";
+                    foreach ($booking as $user_booking) {
             ?>
 
             <tr>
-                <th scope="row"><?php echo $booking['id']; ?></th>
-                <td><?php echo $booking['scheduler']; ?></td>
-                <td><?php echo $booking['purpose']; ?></td>
-                <td><?php echo $booking['room']; ?></td>
-                <td><?php echo $booking['start']; ?></td>
-                <td><?php echo $booking['end']; ?></td>
-                <td><?php echo $booking['editby']; ?></td>
-                <td><?php echo $booking['timestamp']; ?></td>
+                <th scope="row"><?php echo $user_booking['id']; ?></th>
+                <td><?php echo $user_booking['scheduler']; ?></td>
+                <td><?php echo $user_booking['purpose']; ?></td>
+                <td><?php echo $user_booking['room']; ?></td>
+                <td><?php echo $user_booking['start']; ?></td>
+                <td><?php echo $user_booking['end']; ?></td>
+                <td><?php echo $user_booking['editby']; ?></td>
+                <td><?php echo $user_booking['timestamp']; ?></td>
 
                 <td>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#editBooking" class="btn btn-success">Edit</a>
-                    <a href="?delete=<?php echo $booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
+                    <!-- Pass Value ไป Modal ต้องใช้ button เท่านั้น -->
+                    <button type="submit" data-bs-toggle="modal" data-bs-target="#editBooking<?php echo $user_booking['id']; ?>" class="btn btn-success">Edit</button>
+                    <a href="?delete=<?php echo $user_booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
                 </td>
             </tr>
 
             <?php
-            }
-                }?>
-
+                    include "../modal_editbooking.php";
+                    }
+                }
+            ?>
+            
         </tbody>
     </table>
 </div>

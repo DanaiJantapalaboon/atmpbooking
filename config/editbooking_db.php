@@ -14,24 +14,22 @@
 
         try {
 
-            $sql = $conn->prepare("UPDATE booking SET name = :name, surname = :surname, email = :email, position = :position, organisation = :organisation, password = :password WHERE id = :id");
+            $sql = $conn->prepare("UPDATE booking SET scheduler = :scheduler, purpose = :purpose, room = :room, start = :start, end = :end, editby = :editby WHERE id = :id");
 
             $sql->bindParam(":id", $id);
-            $sql->bindParam(":name", $name);
-            $sql->bindParam(":surname", $surname);
-            $sql->bindParam(":email", $email);
-            $sql->bindParam(":position", $position);
-            $sql->bindParam(":organisation", $organisation);
-            $sql->bindParam(":password", $passwordHash);
+            $sql->bindParam(":scheduler", $scheduler);
+            $sql->bindParam(":purpose", $purpose);
+            $sql->bindParam(":room", $room);
+            $sql->bindParam(":start", $startdate);
+            $sql->bindParam(":end", $finisheddate);
+            $sql->bindParam(":editby", $editby);
             $sql->execute();
 
-                echo "<script>alert('Update Account Successfully!'); window.location.href='../login/main.php';</script>";
+            echo "<script>alert('Booking update successfully!'); window.location.href='../allevents/allevents.php';</script>";
 
             } catch(PDOException $e) {
                 echo $e->getMessage();
 
             }
         }
-
-
 ?>
