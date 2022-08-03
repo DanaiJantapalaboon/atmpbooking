@@ -28,7 +28,7 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-center">
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a href="#" class="nav-link text-white px-3">
+                            <a href="main.php" class="nav-link text-white px-3">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
                             Home
                             </a>

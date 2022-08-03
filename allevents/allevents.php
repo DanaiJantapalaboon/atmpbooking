@@ -65,6 +65,7 @@
     include "component_navbar_allevents.php";
 ?>
 
+<h3 class="text-center mt-4">Cleanroom Scheduling Calendar - Summary Table</h3>
 
 <div class="container px-3 py-3 table-responsive">
     <table class="table table-hover">
@@ -117,8 +118,19 @@
 
                 <td>
                     <!-- Pass Value ไป Modal ต้องใช้ button เท่านั้น -->
-                    <button type="submit" data-bs-toggle="modal" data-bs-target="#editBooking<?php echo $user_booking['id']; ?>" class="btn btn-success">Edit</button>
-                    <a href="?delete=<?php echo $user_booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
+                    <?php
+                        $scheduler = strval(trim($user_booking['scheduler']));
+                        $user = strval(trim($row['name'] . ' ' . $row['surname']));
+                        if ($scheduler == $user) { ?>
+                            <button type="submit" data-bs-toggle="modal" data-bs-target="#editBooking<?php echo $user_booking['id']; ?>" class="btn btn-success">Edit</button>
+                            <a href="?delete=<?php echo $user_booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
+                        <?php } else { ?>
+                            <button type="button" disabled class="btn btn-secondary">Edit</button>
+                            <button type="button" disabled class="btn btn-secondary">Delete</button>
+                        <?php }
+
+                    ?>
+
                 </td>
             </tr>
 

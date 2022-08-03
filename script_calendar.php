@@ -33,6 +33,7 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            displayEventTime: false,
             //initialDate: '2022-07-07',
             headerToolbar: {
             left: 'prev,next',

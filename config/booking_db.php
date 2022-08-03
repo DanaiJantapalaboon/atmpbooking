@@ -22,7 +22,8 @@
             $stmt->bindParam(":end", $finisheddate);
             $stmt->execute();
 
-            echo "<script>alert('Booking Complete!, Thank you for your information.'); window.location.href='../login/main.php';</script>";
+            header("location: ../login/main.php");
+            //echo "<script>alert('Booking Complete!, Thank you for your information.'); window.location.href='../login/main.php';</script>";
 
             } catch(PDOException $e) {
                 echo $e->getMessage();
