@@ -67,10 +67,6 @@
         </div>
 </header>
 
-<div class="container text-end px-3">
-    <p><b>Welcome Anonymous, Please <a href="#" data-bs-toggle="modal" data-bs-target="#userLogin">Login</a> First!</b><br>
-    Cleanroom Booking System - Version 1.00</p>
-</div>
 
 <style>
     header a:hover {

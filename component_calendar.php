@@ -1,10 +1,11 @@
-<h3 class="text-center mt-4">Cleanroom Scheduling Calendar - ATMP Centre, Medical Life Science Institute</h3>
+<div class="container" id="contentBox">
+    <div class="text-end">
+        <p><b>Welcome Anonymous, Please <a href="#" data-bs-toggle="modal" data-bs-target="#userLogin">Login</a> First!</b><br>
+            Cleanroom Booking System - Version 1.00</p>
+    </div>
 
-<hr>
-<div class="container px-3 py-3" id='calendar'>
-    
+    <h3 class="text-center mt-4">Cleanroom Scheduling Calendar - ATMP Centre, Medical Life Science Institute</h3>
+    <hr>
+
+    <div class="container py-3" id='calendar'></div>
 </div>
-
-<footer class="py-3 mt-3 text-bg-info text-center">
-    &copy; 2022 ATMP Centre, Medical Life Sciences Institute, All rights reserved.
-</footer>

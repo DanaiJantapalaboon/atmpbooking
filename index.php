@@ -9,6 +9,7 @@
     <!-- Bootstrap & custom headers -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom/headers.css" rel="stylesheet">
+    <link href="css/custom/custom.css" rel="stylesheet">
 
     <!-- js Bootstrap -->
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -25,7 +26,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>-->
 
     <?php include "script_calendar.php"; ?>
-    
 
 </head>
 
@@ -37,6 +37,7 @@
     include "component_header.php";
     include "component_navbar.php";
     include "component_calendar.php";
+    include "component_footer.php";
 ?>
 
     

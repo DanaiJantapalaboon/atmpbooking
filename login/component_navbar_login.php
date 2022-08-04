@@ -63,10 +63,6 @@
         </div>
 </header>
 
-<div class="container text-end px-3">
-    <p><b>Welcome!, <?php echo $row['name'] . ' ' . $row['surname']. ' '; ?><a href="#" data-bs-toggle="modal" data-bs-target="#editaccount">Edit account</a></b><br>
-    Cleanroom Booking System - Version 1.00</p>
-</div>
 
 <style>
     header a:hover {

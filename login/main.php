@@ -21,6 +21,7 @@
     <!-- Bootstrap & custom headers -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom/headers.css" rel="stylesheet">
+    <link href="../css/custom/custom.css" rel="stylesheet">
 
     <!-- js Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
@@ -51,8 +52,21 @@
 
     include "../component_header.php";
     include "component_navbar_login.php";
-    include "../component_calendar.php";
 ?>
+
+    <div class="container" id="contentBox">
+        <div class="text-end">
+            <p><b>Welcome!, <?php echo $row['name'] . ' ' . $row['surname']. ' '; ?><a href="#" data-bs-toggle="modal" data-bs-target="#editaccount">Edit account</a></b><br>
+            Cleanroom Booking System - Version 1.00</p>
+        </div>
+
+        <h3 class="text-center mt-4">Cleanroom Scheduling Calendar - ATMP Centre, Medical Life Science Institute</h3>
+        <hr>
+
+        <div class="container py-3" id='calendar'></div>
+    </div>
+
+    <?php include "../component_footer.php"; ?>
     
 </body>
 </html>

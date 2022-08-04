@@ -33,6 +33,7 @@
     <!-- Bootstrap & custom headers -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom/headers.css" rel="stylesheet">
+    <link href="../css/custom/custom.css" rel="stylesheet">
 
     <!-- js Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
@@ -65,90 +66,93 @@
     include "component_navbar_allevents.php";
 ?>
 
-<h3 class="text-center mt-4">Cleanroom Scheduling Calendar - Summary Table</h3>
+    <div class="container" id="contentBox">
+        <div class="text-end">
+            <p><b>Welcome!, <?php echo $row['name'] . ' ' . $row['surname']. ' '; ?><a href="#" data-bs-toggle="modal" data-bs-target="#editaccount">Edit account</a></b><br>
+            Cleanroom Booking System - Version 1.00</p>
+        </div>
+        <h3 class="text-center mt-4">Cleanroom Scheduling Calendar - Summary Table</h3>
 
-<div class="container px-3 py-3 table-responsive">
-    <table class="table table-hover">
-        <thead class="table-danger">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Scheduler</th>
-                <th scope="col">Purpose</th>
-                <th scope="col">Room</th>
-                <th scope="col">Start-Date</th>
-                <th scope="col">End-Date</th>
-                <th scope="col">Edit by</th>
-                <th scope="col">Timestamp</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            <?php if (isset($_SESSION['success'])) { ?>
-                <div class="alert alert-success">
-                    <?php    // สคริปต์ดึงข้อความ success
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
+        <div class="container py-3 table-responsive">
+            <table class="table table-hover">
+                <thead class="table-danger">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Scheduler</th>
+                        <th scope="col">Purpose</th>
+                        <th scope="col">Room</th>
+                        <th scope="col">Start-Date</th>
+                        <th scope="col">End-Date</th>
+                        <th scope="col">Edit by</th>
+                        <th scope="col">Timestamp</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php if (isset($_SESSION['success'])) { ?>
+                        <div class="alert alert-success">
+                            <?php    // สคริปต์ดึงข้อความ success
+                                echo $_SESSION['success'];
+                                unset($_SESSION['success']);
+                            ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php   // สคริปต์ดึงข้อมูลจากตาราง booking
+                        
+
+                        $stmt = $conn->query("SELECT * FROM booking");
+                        $stmt->execute();
+                        $booking = $stmt->fetchAll();
+
+                        if (!$booking) {
+                            echo "<p><td colspan='9' class='text-center'>No booking found</td></p>";
+                        } else {
+                            foreach ($booking as $user_booking) {
                     ?>
-                </div>
-            <?php } ?>
 
-            <?php   // สคริปต์ดึงข้อมูลจากตาราง booking
-                
+                    <tr>
+                        <th scope="row"><?php echo $user_booking['id']; ?></th>
+                        <td><?php echo $user_booking['scheduler']; ?></td>
+                        <td><?php echo $user_booking['purpose']; ?></td>
+                        <td><?php echo $user_booking['room']; ?></td>
+                        <td><?php echo $user_booking['start']; ?></td>
+                        <td><?php echo $user_booking['end']; ?></td>
+                        <td><?php echo $user_booking['editby']; ?></td>
+                        <td><?php echo $user_booking['timestamp']; ?></td>
 
-                $stmt = $conn->query("SELECT * FROM booking");
-                $stmt->execute();
-                $booking = $stmt->fetchAll();
+                        <td>
+                            <!-- Pass Value ไป Modal ต้องใช้ button เท่านั้น -->
+                            <?php
+                                $scheduler = strval(trim($user_booking['scheduler']));
+                                $user = strval(trim($row['name'] . ' ' . $row['surname']));
+                                if ($scheduler == $user) { ?>
+                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#editBooking<?php echo $user_booking['id']; ?>" class="btn btn-success">Edit</button>
+                                    <a href="?delete=<?php echo $user_booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
+                                <?php } else { ?>
+                                    <button type="button" disabled class="btn btn-secondary">Edit</button>
+                                    <button type="button" disabled class="btn btn-secondary">Delete</button>
+                                <?php }
 
-                if (!$booking) {
-                    echo "<p><td colspan='9' class='text-center'>No booking found</td></p>";
-                } else {
-                    foreach ($booking as $user_booking) {
-            ?>
+                            ?>
 
-            <tr>
-                <th scope="row"><?php echo $user_booking['id']; ?></th>
-                <td><?php echo $user_booking['scheduler']; ?></td>
-                <td><?php echo $user_booking['purpose']; ?></td>
-                <td><?php echo $user_booking['room']; ?></td>
-                <td><?php echo $user_booking['start']; ?></td>
-                <td><?php echo $user_booking['end']; ?></td>
-                <td><?php echo $user_booking['editby']; ?></td>
-                <td><?php echo $user_booking['timestamp']; ?></td>
+                        </td>
+                    </tr>
 
-                <td>
-                    <!-- Pass Value ไป Modal ต้องใช้ button เท่านั้น -->
                     <?php
-                        $scheduler = strval(trim($user_booking['scheduler']));
-                        $user = strval(trim($row['name'] . ' ' . $row['surname']));
-                        if ($scheduler == $user) { ?>
-                            <button type="submit" data-bs-toggle="modal" data-bs-target="#editBooking<?php echo $user_booking['id']; ?>" class="btn btn-success">Edit</button>
-                            <a href="?delete=<?php echo $user_booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Please confirm to delete ?')">Delete</a>
-                        <?php } else { ?>
-                            <button type="button" disabled class="btn btn-secondary">Edit</button>
-                            <button type="button" disabled class="btn btn-secondary">Delete</button>
-                        <?php }
-
+                            include "../modal_editbooking.php";
+                            }
+                        }
                     ?>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                </td>
-            </tr>
-
-            <?php
-                    include "../modal_editbooking.php";
-                    }
-                }
-            ?>
-            
-        </tbody>
-    </table>
-</div>
-
-
-
-    <footer class="py-3 mt-3 text-bg-info text-center">
-        &copy; 2022 ATMP Centre, Medical Life Sciences Institute, All rights reserved.
-    </footer>
+    <?php include "../component_footer.php" ?>
 </body>
 </html>
 

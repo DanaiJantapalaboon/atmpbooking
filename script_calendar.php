@@ -24,6 +24,11 @@
     }
 ?>
 
+<style>
+    #calendar td.fc-day-sun, #calendar td.fc-day-sat {
+    background-color: rgb(241, 241, 241);
+}
+</style>
 
 <!-- สคริปต์ Full Calendar -->
 <script>
