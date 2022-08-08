@@ -19,20 +19,20 @@
     <title>Cleanroom Booking | ATMP Centre, Medical Life Science Institute</title>
 
     <!-- Bootstrap & custom headers -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/custom/headers.css" rel="stylesheet">
-    <link href="../css/custom/custom.css" rel="stylesheet">
+    <link href="../plugin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../plugin/css/custom/headers.css" rel="stylesheet">
+    <link href="../plugin/css/custom/custom.css" rel="stylesheet">
 
     <!-- js Bootstrap -->
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../plugin/js/bootstrap.bundle.min.js"></script>
 
     <!-- Full Calendar Packs-->
-    <link href="../lib/main.min.css" rel="stylesheet">
-    <script src="../lib/main.min.js"></script>
+    <link href="../plugin/lib/main.min.css" rel="stylesheet">
+    <script src="../plugin/lib/main.min.js"></script>
 
     <!-- DateTime Picker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" /> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> -->
 
     <?php include "../script_calendar.php"; ?>
 

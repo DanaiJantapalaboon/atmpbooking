@@ -31,20 +31,24 @@
     <title>Cleanroom Booking | ATMP Centre, Medical Life Science Institute</title>
 
     <!-- Bootstrap & custom headers -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/custom/headers.css" rel="stylesheet">
-    <link href="../css/custom/custom.css" rel="stylesheet">
+    <link href="../plugin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../plugin/css/custom/headers.css" rel="stylesheet">
+    <link href="../plugin/css/custom/custom.css" rel="stylesheet">
 
     <!-- js Bootstrap -->
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../plugin/js/bootstrap.bundle.min.js"></script>
 
     <!-- Full Calendar Packs-->
-    <link href="../lib/main.min.css" rel="stylesheet">
-    <script src="../lib/main.min.js"></script>
+    <link href="../plugin/lib/main.min.css" rel="stylesheet">
+    <script src="../plugin/lib/main.min.js"></script>
+
+    <!-- Jquery & Table Filter Plugin -->
+    <script src="../plugin/jquery/jquery.min.js"></script>
+    <script src="../plugin/jquery/ddtf.js"></script>
 
     <!-- DateTime Picker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" /> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> -->
 
     <?php include "../script_calendar.php"; ?>
 
@@ -71,21 +75,95 @@
             <p><b>Welcome!, <?php echo $row['name'] . ' ' . $row['surname']. ' '; ?><a href="#" data-bs-toggle="modal" data-bs-target="#editaccount">Edit account</a></b><br>
             Cleanroom Booking System - Version 1.00</p>
         </div>
-        <h3 class="text-center mt-4">Cleanroom Scheduling Calendar - Summary Table</h3>
+        <h3 class="text-center mt-4 mb-4">Cleanroom Scheduling Calendar - Summary Table</h3>
+
+        <!-- ------------------------------------------------------------------------------------------------------------------- -->
+        <!-- PHP SelectBox -->
+        <?php
+            // $stmtScheduler = $conn->prepare("SELECT DISTINCT scheduler FROM booking");
+            // $stmtScheduler->execute();
+            // $results_scheduler = $stmtScheduler->fetchAll();
+
+            // $stmtRoom = $conn->prepare("SELECT DISTINCT room FROM booking");
+            // $stmtRoom->execute();
+            // $results_Room = $stmtRoom->fetchAll();
+        ?>
+
+        <!-- SelectBox ข้อมูล -->
+        <!-- <div class="container py-3">
+            <div class="row justify-content-center">
+                <div class="col-sm-4">
+                    <h5>Filter Scheduler :</h5>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu..</option>
+                        <?php //foreach($results_scheduler as $output) { ?>
+                        <option><?php //echo $output['scheduler']; ?></option>
+                        <?php //} ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-4">
+                    <h5>Filter Room :</h5>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu..</option>
+                        <?php //foreach($results_Room as $output) { ?>
+                        <option><?php //echo $output['room']; ?></option>
+                        <?php //} ?>
+                    </select>
+                </div>
+            </div>
+        </div> -->
+        <!-- PHP SelectBox -->
+        <!-- ------------------------------------------------------------------------------------------------------------------- -->
+
+<style>
 
 
+    tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+}
+
+
+tr:hover {background-color: lightgray;}
+
+select {
+    border: none;
+    width: 120px;
+    font-weight: bold;
+    background-color: lightgray;
+}
+
+thead {
+    background-color: lightgray;
+
+}
+
+</style>
+
+        <!-- ส่วนตาราง -->
         <div class="container py-3 table-responsive">
-            <table class="table table-hover">
-                <thead class="table-danger">
+            <!-- <table class="table table-hover" id="myTable"> -->
+                <!-- <thead class="table-danger"> -->
+            <table cellpadding="3" id="myTable">
+                <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th class="py-2" scope="col">#</th>
                         <th scope="col">Scheduler</th>
-                        <th scope="col">Purpose</th>
+                        <th scope="col" class="skip-filter">Purpose</th>
                         <th scope="col">Room</th>
-                        <th scope="col">Start-Date</th>
-                        <th scope="col">End-Date</th>
-                        <th scope="col">Edit by</th>
-                        <th scope="col">Timestamp</th>
+                        <th scope="col" class="skip-filter">Start-Date</th>
+                        <th scope="col" class="skip-filter">End-Date</th>
+                        <th scope="col" class="skip-filter">Edit by</th>
+                        <th scope="col" class="skip-filter">Timestamp</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -103,7 +181,7 @@
                     <?php   // สคริปต์ดึงข้อมูลจากตาราง booking
                         
 
-                        $stmt = $conn->query("SELECT * FROM booking");
+                        $stmt = $conn->query("SELECT * FROM booking ORDER BY timestamp DESC");
                         $stmt->execute();
                         $booking = $stmt->fetchAll();
 
@@ -149,6 +227,14 @@
                     
                 </tbody>
             </table>
+
+
+
+            <script type="text/javascript">
+
+
+                $('#myTable').ddTableFilter();
+            </script>
         </div>
     </div>
 

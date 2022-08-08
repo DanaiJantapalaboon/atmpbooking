@@ -17,7 +17,7 @@
     foreach($result as $row)
     {
         $data[] = array(
-            'title' => $row["purpose"] . ', ' . $row["room"] . ', ' . $row["scheduler"],
+            'title' => "วัตถุประสงค์: " . $row["purpose"] . ', ' . "ห้อง: " . $row["room"] . ', ' . "ผู้จอง: " . $row["scheduler"],
             'start' => $row["start"],
             'end' => $row["end"] . "T23:59:00"
         );
@@ -27,6 +27,11 @@
 <style>
     #calendar td.fc-day-sun, #calendar td.fc-day-sat {
     background-color: rgb(241, 241, 241);
+}
+
+    .fc-event-time, .fc-event-title {
+    padding: 0 1px;
+    white-space: normal;
 }
 </style>
 
